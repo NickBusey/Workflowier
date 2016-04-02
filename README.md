@@ -7,7 +7,7 @@ Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey ico
 
 ## Current features
 
- - Adds 1wk and 24hrs buttons to the header to show recently changed items.
+ - Adds 'this week', 'today', and 'just now' buttons to the header to show recently changed items.
  - Random hashtag functionality. Any hashtags with -rand at the end will go to another random item with the same hashtag. Basically recreates the functionality of flash cards.
 
   Example: #spanish-rand for spanish words you want to study. #capitals-rand for capitals.

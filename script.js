@@ -26,7 +26,7 @@ searching = false;
 function main() {
   // Note, jQ replaces jQ to avoid conflicts.
   // Insert recent links
-    jQ('#savedViewHUDButton').after("<div class='showCompletedButton button'><div class='topBarButtonTextContainer'><a href='#' id='recentLink_1wk'>1wk</a></div></div>");
+    jQ('#savedViewHUDButton').after("<div class='showCompletedButton button'><div class='topBarButtonTextContainer'><a href='#' id='recentLink_1wk'>This Week</a></div></div>");
     jQ('#recentLink_1wk').click(function(e) {
       e.preventDefault();
       if (jQ('#searchBox').val()=='last-changed:7d') {
@@ -35,13 +35,22 @@ function main() {
         search.searchProjectTree('last-changed:7d');
       }
     });
-    jQ('#savedViewHUDButton').after("<div class='showCompletedButton button'><div class='topBarButtonTextContainer'><a href='#' class='button' id='recentLink_24hrs'>24hrs</a></div></div>");
+    jQ('#savedViewHUDButton').after("<div class='showCompletedButton button'><div class='topBarButtonTextContainer'><a href='#' class='button' id='recentLink_24hrs'>Today</a></div></div>");
     jQ('#recentLink_24hrs').click(function(e) {
       e.preventDefault();
       if (jQ('#searchBox').val()=='last-changed:1d') {
         search.searchProjectTree('');
       } else {
         search.searchProjectTree('last-changed:1d');
+      }
+    });
+    jQ('#savedViewHUDButton').after("<div class='showCompletedButton button'><div class='topBarButtonTextContainer'><a href='#' class='button' id='recentLink_1hr'>Just Now</a></div></div>");
+    jQ('#recentLink_1hr').click(function(e) {
+      e.preventDefault();
+      if (jQ('#searchBox').val()=='last-changed:1h') {
+        search.searchProjectTree('');
+      } else {
+        search.searchProjectTree('last-changed:1h');
       }
     });
 
