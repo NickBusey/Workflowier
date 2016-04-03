@@ -53,6 +53,73 @@ function main() {
         search.searchProjectTree('last-changed:1h');
       }
     });
+    var generateTagsMenu = function() {
+      search.searchProjectTree('#');
+      var tags = $('.contentTagText');
+      // Generate list of all hashtags
+      var tagObjs = {};
+      tags.each(function(ii, obj) {
+        // console.log(obj);
+        // console.log(jQ(obj).text());
+        var tag = jQ(obj).text();
+
+        var tagObj = tagObjs[tag];
+        console.log(tag,' - ',tagObj);
+        if (!tagObj) {
+          console.log("No tag object, make an empty one.")
+          tagObj = {'count':1};
+        } else {
+          tagObj['count']++;
+        }
+        tagObjs[tag] = tagObj;
+      });
+      console.log(tagObjs);
+      var tagObjsArray = [];
+      for (var tag in tagObjs) {
+        var tagObj = tagObjs[tag];
+        tagObj['tag'] = tag;
+        console.log(tag,tagObj);
+        tagObjsArray.push(tagObj);
+      }
+      console.log(tagObjsArray);
+      var sortedTagObjsArray = tagObjsArray.sort(function (a, b) {
+          return a.count > b.count;
+      });
+      globTest = sortedTagObjsArray;
+      console.log(sortedTagObjsArray);
+      var tagLinkOutput = '';
+      for (var ii in sortedTagObjsArray) {
+        var count = sortedTagObjsArray[ii]['count'];
+        var tag = sortedTagObjsArray[ii]['tag'];
+        tagLinkOutput += "<a href='/#/"+tag+"?q=%23"+tag+"'><strong>"+count+"</strong> #"+tag+"</a>";
+      }
+      console.log(tagLinkOutput);
+      var menu = "<div class='menu-options' id='tagsMenu'>"+tagLinkOutput+"</div>";
+      jQ('#savedViewHUDButton').after("<div class='showCompletedButton button'><div class='topBarButtonTextContainer'><a href='#' class='button' id='openTags'>View Tags</a></div></div>"+menu);
+      jQ('#openTags').click(function() {jQ('#tagsMenu').slideToggle()});
+    };
+
+    // search.searchProjectTree('#daily-teeth');
+    // var total = $('.contentMatch').size()/2;
+    // search.searchProjectTree('#daily-teeth is:complete');
+    // var done = $('.contentMatch').size()/2;
+    // console.log(total,done);
+    // console.log(done/total);
+    // var pct = done/total;
+
+    var attemptTags = function() {
+      setTimeout(function() {
+        try {
+          console.log('Generate tags');
+          generateTagsMenu();
+        } catch(e) {
+          console.log("Got exception",e);
+          attemptTags();
+        }
+      },500);
+    };
+
+    attemptTags();
 
   // Add -rand functionality
     jQ(window).on('hashchange',function(e) {
@@ -82,6 +149,10 @@ function main() {
         },100);
       }
     });
+
+
+  // Add styles
+    jQ('body').append("<style>#tagsMenu{max-width: 300px; right: 140px;}#tagsMenu a {margin: 0 5px; display: block; float: left;}</style>");
 }
 
 // load jQuery and execute the main function
