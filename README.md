@@ -16,6 +16,7 @@ Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey ico
 
 ## Planned features
 
+ - Store full Tag List as the first Node in Workflowy upon every generation. That way you have access to a full tags list on the mobile apps also.
  - -randlist hash tag that just shows a random child. This may be more useful than having to put the -rand tags on each item you want to flash through.
  - Sort tag list by count.
  - Show percentage of hashtag items that are 'complete'.
