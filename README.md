@@ -26,3 +26,6 @@ Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey ico
  - 'Always show completed items' setting toggle.
  - Color coded hashtags ala painterly.
  - Random links colored differently.
+ - Add license (GPL?)
+
+ 
