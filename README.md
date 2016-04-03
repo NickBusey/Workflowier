@@ -3,7 +3,7 @@ User Script for Workflowy.com that adds some extra features.
 
 ## Installation
 
-Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey icon, then click 'Add new script'. Copy and paste the contents of script.js in, hit save. Reload workflowy.com.
+Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey icon, then click 'Add new script'. Delete everything in the large text area and copy and paste the contents of script.js instead, hit save. Reload workflowy.com.
 
 ## Current features
 
@@ -16,7 +16,8 @@ Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey ico
 
 ## Planned features
 
- - Sort tag list by count
- - Show percentage of items with a certain hashtag that are 'complete'.
+ - -randlist hash tag that just shows a random child. This may be more useful than having to put the -rand tags on each item you want to flash through.
+ - Sort tag list by count.
+ - Show percentage of hashtag items that are 'complete'.
  - Show streak of recently created items with hashtags that have been 'completed'. This will replicate "don't break the chain" functionality.
- - Better install?
+ - Better install/install directions?
