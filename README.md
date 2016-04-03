@@ -22,3 +22,7 @@ Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey ico
  - Show percentage of hashtag items that are 'complete'.
  - Show streak of recently created items with hashtags that have been 'completed'. This will replicate "don't break the chain" functionality.
  - Better install/install directions?
+ - Saved settings.
+ - 'Always show completed items' setting toggle.
+ - Color coded hashtags ala painterly.
+ - Random links colored differently.
