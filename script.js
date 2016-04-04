@@ -1,4 +1,3 @@
-
 // ==UserScript==
 // @name         Workflowier
 // @namespace    Workflowier
@@ -6,6 +5,7 @@
 // @author       Nick Busey
 // @description  User Script for Workflowy.com that adds some extra features.
 // @match        https://workflowy.com/#
+// @version      0.0.1.20160404211715
 // ==/UserScript==
 
 // a function that loads jQuery and calls a callback function when jQuery has finished loading

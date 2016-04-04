@@ -3,6 +3,10 @@ User Script for Workflowy.com that adds some extra features.
 
 ## Installation
 
+### Automated Install
+Go to: https://greasyfork.org/en/scripts/18496-workflowier and click 'Install'.
+
+### Manual Install
 Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey icon, then click 'Add new script'. Delete everything in the large text area and copy and paste the contents of script.js instead, hit save. Reload workflowy.com.
 
 ## Current features
