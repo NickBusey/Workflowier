@@ -32,3 +32,5 @@ Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey ico
  - Random links colored differently.
  - Add license (GPL?)
  - Website with demo gifs
+ - Filters for 'shared' and 'embedded'
+ - Additional keyboard shortcuts

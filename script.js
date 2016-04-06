@@ -4,7 +4,7 @@
 // @include      https://workflowy.com/*
 // @author       Nick Busey
 // @description  User Script for Workflowy.com that adds some extra features.
-// @version      0.0.1.4
+// @version      0.0.1.5
 // ==/UserScript==
 
 // a function that loads jQuery and calls a callback function when jQuery has finished loading
@@ -25,7 +25,15 @@ searching = false;
 function main() {
     // Note, jQ replaces jQ to avoid conflicts.
     // Insert recent links
-    jQ('#savedViewHUDButton').after("<div class='showCompletedButton button'><div class='topBarButtonTextContainer'><a href='#' id='recentLink_1wk'>This Week</a></div></div>");
+    var recentLinks = "<div class='menu-options' id='recentLinksMenu'>"+
+    "<div class='button'><div class='topBarButtonTextContainer'><a href='#' id='recentLink_1wk'>This Week</a></div></div>"+
+    "<div class='button'><div class='topBarButtonTextContainer'><a href='#' class='button' id='recentLink_24hrs'>Today</a></div></div>"+
+    "<div class='button'><div class='topBarButtonTextContainer'><a href='#' class='button' id='recentLink_1hr'>Last Hour</a></div></div>"+
+    "</div>";
+    jQ('#savedViewHUDButton').after("<div class='menuButton button'><div class='topBarButtonTextContainer'><a href='#' id='showRecentLinks'>Recent</a></div></div>"+recentLinks);
+
+    jQ('#showRecentLinks').click(function() {jQ('#recentLinksMenu').slideToggle()});
+
     jQ('#recentLink_1wk').click(function(e) {
         e.preventDefault();
         if (jQ('#searchBox').val()=='last-changed:7d') {
@@ -34,7 +42,6 @@ function main() {
             search.searchProjectTree('last-changed:7d');
         }
     });
-    jQ('#savedViewHUDButton').after("<div class='showCompletedButton button'><div class='topBarButtonTextContainer'><a href='#' class='button' id='recentLink_24hrs'>Today</a></div></div>");
     jQ('#recentLink_24hrs').click(function(e) {
         e.preventDefault();
         if (jQ('#searchBox').val()=='last-changed:1d') {
@@ -43,7 +50,6 @@ function main() {
             search.searchProjectTree('last-changed:1d');
         }
     });
-    jQ('#savedViewHUDButton').after("<div class='showCompletedButton button'><div class='topBarButtonTextContainer'><a href='#' class='button' id='recentLink_1hr'>Just Now</a></div></div>");
     jQ('#recentLink_1hr').click(function(e) {
         e.preventDefault();
         if (jQ('#searchBox').val()=='last-changed:1h') {
@@ -83,7 +89,7 @@ function main() {
         }
         //   console.log(tagObjsArray);
         var sortedTagObjsArray = tagObjsArray.sort(function (a, b) {
-            return a.count > b.count;
+            return b.count - a.count;
         });
         globTest = sortedTagObjsArray;
         //   console.log(sortedTagObjsArray);
@@ -91,13 +97,15 @@ function main() {
         for (var ii in sortedTagObjsArray) {
             var count = sortedTagObjsArray[ii]['count'];
             var tag = sortedTagObjsArray[ii]['tag'];
-            tagLinkOutput += "<a href='/#/"+tag+"?q=%23"+tag+"'><strong>"+count+"</strong> #"+tag+"</a>";
+            tagLinkOutput += "<a href='/#/"+tag+"?q=%23"+tag+"' title='percentage: done/total complete.'><strong>"+count+"</strong> #"+tag+"</a>";
         }
         //   console.log(tagLinkOutput);
         var menu = "<div class='menu-options' id='tagsMenu'>"+tagLinkOutput+"</div>";
-        jQ('#savedViewHUDButton').after("<div class='showCompletedButton button'><div class='topBarButtonTextContainer'><a href='#' class='button' id='openTags'>View Tags</a></div></div>"+menu);
+
+        jQ('#savedViewHUDButton').after("<div class='button menuButton'><div class='topBarButtonTextContainer'><a href='#' class='button' id='openTags'>View Tags</a></div></div>"+menu);
         jQ('#openTags').click(function() {jQ('#tagsMenu').slideToggle()});
         search.searchProjectTree(currentSearch);
+
     };
 
     // search.searchProjectTree('#daily-teeth');
@@ -111,10 +119,10 @@ function main() {
     var attemptTags = function() {
         setTimeout(function() {
             try {
-                console.log('Generate tags');
+                // console.log('Generate tags');
                 generateTagsMenu();
             } catch(e) {
-                console.log("Got exception",e);
+                // console.log("Got exception",e);
                 attemptTags();
             }
         },500);
@@ -153,7 +161,12 @@ function main() {
 
 
     // Add styles
-    jQ('body').append("<style>#tagsMenu{max-width: 300px; right: 140px;}#tagsMenu a {margin: 0 5px; display: block; float: left;}</style>");
+    jQ('body').append("<style>"+
+    "#tagsMenu{max-width: 250px; right: 140px;}"+
+    "#tagsMenu a {margin: 0 5px; display: block;}"+
+    "#recentLinksMenu{right:400px}"+
+    ".menuButton{display: block; color: white; margin-left: -1px;    padding: 8px 1em;    font-size: 13px;    text-align: center;    float: right;    border-bottom: none;    border-left: 1px solid #111;    border-right: 1px solid #111; border-radius: 0;    background-color: #555;    position: relative;}"+
+    "</style>");
 }
 
 // load jQuery and execute the main function
