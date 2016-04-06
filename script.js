@@ -4,7 +4,8 @@
 // @include      https://workflowy.com/*
 // @author       Nick Busey
 // @description  User Script for Workflowy.com that adds some extra features.
-// @version      0.0.1.5
+// @version      0.0.1.6
+// @updateURL    https://greasyfork.org/scripts/18496-workflowier/code/Workflowier.user.js
 // ==/UserScript==
 
 // a function that loads jQuery and calls a callback function when jQuery has finished loading
