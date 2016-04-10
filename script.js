@@ -3,8 +3,9 @@
 // @namespace    Workflowier
 // @include      https://workflowy.com/*
 // @author       Nick Busey
+// @grant        none
 // @description  User Script for Workflowy.com that adds some extra features.
-// @version      0.0.1.6
+// @version      0.0.1.7
 // @updateURL    https://greasyfork.org/scripts/18496-workflowier/code/Workflowier.user.js
 // ==/UserScript==
 
