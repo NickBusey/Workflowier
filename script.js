@@ -5,7 +5,7 @@
 // @author       Nick Busey
 // @grant        none
 // @description  User Script for Workflowy.com that adds some extra features.
-// @version      0.0.1.9
+// @version      0.0.2
 // @updateURL    https://greasyfork.org/scripts/18496-workflowier/code/Workflowier.user.js
 // ==/UserScript==
 
@@ -207,10 +207,10 @@ function main() {
 
     // Add styles
     jQ('body').append("<style>"+
-        "#tagsMenu{max-width: 250px; right: 140px;}"+
-        "#tagsMenu a {margin: 0 5px; display: block;}"+
-        "#recentLinksMenu{right:400px}"+
-        ".menuButton{display: block; color: white; margin-left: -1px;    padding: 8px 1em;    font-size: 13px;    text-align: center;    float: right;    border-bottom: none;    border-left: 1px solid #111;    border-right: 1px solid #111; border-radius: 0;    background-color: #555;    position: relative;}"+
+        "#tagsMenu{ height:300px; overflow:scroll; max-width: 250px; right: 140px; }"+
+        "#tagsMenu a { margin: 0 5px; display: block; }"+
+        "#recentLinksMenu{ right:400px; }"+
+        ".menuButton{ display: block; color: white; margin-left: -1px;    padding: 8px 1em;    font-size: 13px;    text-align: center;    float: right;    border-bottom: none;    border-left: 1px solid #111;    border-right: 1px solid #111; border-radius: 0;    background-color: #555;    position: relative;}"+
     "</style>");
 }
 
