@@ -34,3 +34,5 @@ Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey ico
  - Website with demo gifs
  - Filters for 'shared' and 'embedded'
  - Additional keyboard shortcuts
+ - Individual list completion (Given one todo list with a certain hashtag, calculate and display the percentage complete of that list)
+ 
