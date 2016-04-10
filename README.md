@@ -9,7 +9,19 @@ Go to: https://greasyfork.org/en/scripts/18496-workflowier and click 'Install'.
 ### Manual Install
 Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey icon, then click 'Add new script'. Delete everything in the large text area and copy and paste the contents of script.js instead, hit save. Reload workflowy.com.
 
-## Current features
+## Support
+
+### Community
+
+https://www.reddit.com/r/Workflowier
+
+### Bugs
+
+https://github.com/NickBusey/Workflowier/issues
+
+## Roadmap
+
+### Current features
 
  - Adds a 'View Tags' button which opens a menu with a link to every hashtag in your document, with a count of how many times each tag appears.
  - Percentage complete of hashtags on mouse-over in the menu (in the title attribute)
@@ -21,7 +33,7 @@ Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey ico
   Example: #spanish-rand for spanish words you want to study. #capitals-rand for capitals.
 
 
-## Planned features
+### Planned features
 
  - -randlist hash tag that just shows a random child. This may be more useful than having to put the -rand tags on each item you want to flash through.
  - Show percentage of hashtag items that are 'complete'.
@@ -30,9 +42,9 @@ Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey ico
  - Saved settings.
  - 'Always show completed items' setting toggle.
  - Random links colored differently.
- - Add license (GPL?)
  - Website with demo gifs
  - Filters for 'shared' and 'embedded'
  - Additional keyboard shortcuts
  - Individual list completion (Given one todo list with a certain hashtag, calculate and display the percentage complete of that list)
- 
+ - Generate charts of historical data (Given a hashtag with a data point eg: #chart-weight 150 it will chart the point over time )
+

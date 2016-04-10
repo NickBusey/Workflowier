@@ -5,7 +5,8 @@
 // @author       Nick Busey
 // @grant        none
 // @description  User Script for Workflowy.com that adds some extra features.
-// @version      0.0.2.1
+// @version      0.0.2.2
+// @license      MIT
 // @updateURL    https://greasyfork.org/scripts/18496-workflowier/code/Workflowier.user.js
 // ==/UserScript==
 
