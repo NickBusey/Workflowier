@@ -3,7 +3,7 @@ User Script for Workflowy.com that adds some extra features.
 
 ## Screenshot
 
-http://i.imgur.com/Plhvj50.png
+http://imgur.com/Plhvj50
 
 ## Installation
 
