@@ -69,32 +69,26 @@ function main() {
         var tags = $('.contentTagText');
         var tagObjs = {};
         tags.each(function(ii, obj) {
-            // console.log(obj);
-            // console.log(jQ(obj).text());
             var tag = jQ(obj).text().toLowerCase();
 
             var tagObj = tagObjs[tag];
-            // console.log(tag,' - ',tagObj);
             if (!tagObj) {
-                //   console.log("No tag object, make an empty one.")
                 tagObj = {'count':1};
             } else {
-                tagObj['count']++;
+                tagObj.count++;
             }
             tagObjs[tag] = tagObj;
         });
-        //   console.log(tagObjs);
         var tagObjsArray = [];
         for (var tag in tagObjs) {
             var tagObj = tagObjs[tag];
-            tagObj['tag'] = tag;
-            // console.log(tag,tagObj);
+            tagObj.tag = tag;
             tagObjsArray.push(tagObj);
         }
         return tagObjsArray.sort(function (a, b) {
             return b.count - a.count;
         });
-    }
+    };
 
     var generateTags = function() {
         var currentSearch = jQ('#searchBox').val();
@@ -120,12 +114,9 @@ function main() {
             var completed = completedTags.filter(function (obj) {
                 return obj.tag === tag;
             });
-            console.log(completed[0]);
             var completed_count = (completed[0]) ? completed[0].count : 0;
-            console.log (completed_count);
             tagLinkOutput += "<a href='/#/"+tag+"?q=%23"+tag+"' title='"+Math.round(100*(completed_count/count))+"% "+completed_count+"/"+count+" complete.'><strong>"+count+"</strong> #"+tag+"</a>";
         }
-        //   console.log(tagLinkOutput);
         $('#tagsMenu').html(tagLinkOutput);
         search.searchProjectTree(currentSearch);
 
@@ -147,7 +138,7 @@ function main() {
             }
             jQ('#tagsMenu').slideToggle();
         });
-    }
+    };
 
     var updateTagsNote = function(tagArray) {
         window.location.hash='';
@@ -204,6 +195,10 @@ function main() {
         }
     });
 
+    // Add image popups
+    // jQ('a').live('mouseenter',function (e) {
+    //     console.log(e);
+    // });
 
     // Add styles
     jQ('body').append("<style>"+
@@ -212,6 +207,34 @@ function main() {
         "#recentLinksMenu{ right:400px; }"+
         ".menuButton{ display: block; color: white; margin-left: -1px;    padding: 8px 1em;    font-size: 13px;    text-align: center;    float: right;    border-bottom: none;    border-left: 1px solid #111;    border-right: 1px solid #111; border-radius: 0;    background-color: #555;    position: relative;}"+
     "</style>");
+
+    // Add coloring styles (ala Paintly, stolen from: https://userstyles.org/styles/125832/re-workflowy-re-painter)
+    setInterval(function() {
+        $('.content').css('color','');
+        var colors = {
+            'red':'#FFB5B5',
+            'orange':'#FFD8B5',
+            'yellow':'#FFFAB5',
+            'lime':'#E1FFB5',
+            'olive':'#B5FFC9',
+            'green':'#CCFFB5',
+            'teal':'#B5FFD7',
+            'aquea':'#B5FFFC',
+            'blu':'#B5E8FF',
+            'navy':'#B9B5FF',
+            'fuchia':'#F1B5FF',
+            'purple':'#D3B5FF',
+            'maroon':'#C08F8F',
+            'silver':'silver',
+            'gray':'gray',
+            'black':'black',
+            'white':'white'
+        };
+        for (var ii in colors) {
+            var color = colors[ii];
+            $('.content:contains("#'+ii+'")').css('background-color',color);
+        }
+    },500);
 }
 
 // load jQuery and execute the main function

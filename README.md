@@ -16,6 +16,7 @@ Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey ico
  - Stores a list of hashtags ordered by frequency as last Node in Workflowy. That way you have access to a full tags list on Mobile Apps also. Generated on page load and every time you open the 'View Tags' menu. Working on auto-saving of this.
  - Add a 'Recent' menu with 'this week', 'today', and 'just now' buttons to show recently changed items.
  - Random hashtag functionality. Any hashtags with -rand at the end will go to another random item with the same hashtag. Basically recreates the functionality of flash cards.
+ - Color coded hashtags ala painterly.
 
   Example: #spanish-rand for spanish words you want to study. #capitals-rand for capitals.
 
@@ -28,7 +29,6 @@ Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey ico
  - Better install/install directions?
  - Saved settings.
  - 'Always show completed items' setting toggle.
- - Color coded hashtags ala painterly.
  - Random links colored differently.
  - Add license (GPL?)
  - Website with demo gifs
