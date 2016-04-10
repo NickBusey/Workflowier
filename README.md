@@ -12,7 +12,9 @@ Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey ico
 ## Current features
 
  - Adds a 'View Tags' button which opens a menu with a link to every hashtag in your document, with a count of how many times each tag appears.
- - Adds 'this week', 'today', and 'just now' buttons to the header to show recently changed items.
+ - Percentage complete of hashtags on mouse-over in the menu (in the title attribute)
+ - Stores a list of hashtags ordered by frequency as last Node in Workflowy. That way you have access to a full tags list on Mobile Apps also. Generated on page load and every time you open the 'View Tags' menu. Working on auto-saving of this.
+ - Add a 'Recent' menu with 'this week', 'today', and 'just now' buttons to show recently changed items.
  - Random hashtag functionality. Any hashtags with -rand at the end will go to another random item with the same hashtag. Basically recreates the functionality of flash cards.
 
   Example: #spanish-rand for spanish words you want to study. #capitals-rand for capitals.
@@ -20,9 +22,7 @@ Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey ico
 
 ## Planned features
 
- - Store full Tag List as the first Node in Workflowy upon every generation. That way you have access to a full tags list on the mobile apps also.
  - -randlist hash tag that just shows a random child. This may be more useful than having to put the -rand tags on each item you want to flash through.
- - Sort tag list by count.
  - Show percentage of hashtag items that are 'complete'.
  - Show streak of recently created items with hashtags that have been 'completed'. This will replicate "don't break the chain" functionality.
  - Better install/install directions?

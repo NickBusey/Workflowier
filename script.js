@@ -5,7 +5,7 @@
 // @author       Nick Busey
 // @grant        none
 // @description  User Script for Workflowy.com that adds some extra features.
-// @version      0.0.1.7
+// @version      0.0.1.8
 // @updateURL    https://greasyfork.org/scripts/18496-workflowier/code/Workflowier.user.js
 // ==/UserScript==
 
@@ -34,7 +34,10 @@ function main() {
     "</div>";
     jQ('#savedViewHUDButton').after("<div class='menuButton button'><div class='topBarButtonTextContainer'><a href='#' id='showRecentLinks'>Recent</a></div></div>"+recentLinks);
 
-    jQ('#showRecentLinks').click(function() {jQ('#recentLinksMenu').slideToggle()});
+    jQ('#showRecentLinks').click(function(e) {
+        e.preventDefault();
+        jQ('#recentLinksMenu').slideToggle();
+    });
 
     jQ('#recentLink_1wk').click(function(e) {
         e.preventDefault();
@@ -60,16 +63,15 @@ function main() {
             search.searchProjectTree('last-changed:1h');
         }
     });
-    var generateTagsMenu = function() {
-        var currentSearch = jQ('#searchBox').val();
-        search.searchProjectTree('#');
-        var tags = $('.contentTagText');
+
+    var generateTagList = function() {
         // Generate list of all hashtags
+        var tags = $('.contentTagText');
         var tagObjs = {};
         tags.each(function(ii, obj) {
             // console.log(obj);
             // console.log(jQ(obj).text());
-            var tag = jQ(obj).text();
+            var tag = jQ(obj).text().toLowerCase();
 
             var tagObj = tagObjs[tag];
             // console.log(tag,' - ',tagObj);
@@ -89,42 +91,83 @@ function main() {
             // console.log(tag,tagObj);
             tagObjsArray.push(tagObj);
         }
-        //   console.log(tagObjsArray);
-        var sortedTagObjsArray = tagObjsArray.sort(function (a, b) {
+        return tagObjsArray.sort(function (a, b) {
             return b.count - a.count;
         });
-        globTest = sortedTagObjsArray;
-        //   console.log(sortedTagObjsArray);
+    }
+
+    var generateTags = function() {
+        var currentSearch = jQ('#searchBox').val();
+        // First let's delete the existing tags index, or else it will count those and old tags are never removed.
+        search.searchProjectTree('#wf-tag-list');
+        $('.project.matches:last .notes .content').text('');
+        $('.project.matches:last .content').trigger('blur');
+        // Now find existing tags.
+        search.searchProjectTree('#');
+        var allTags = generateTagList();
+        // Now find which of those are completed
+        search.searchProjectTree('# is:complete');
+        var completedTags = generateTagList();
+
+        // Store the list of tags
+        updateTagsNote(allTags);
+
+        // Update the menu
         var tagLinkOutput = '';
-        for (var ii in sortedTagObjsArray) {
-            var count = sortedTagObjsArray[ii]['count'];
-            var tag = sortedTagObjsArray[ii]['tag'];
-            tagLinkOutput += "<a href='/#/"+tag+"?q=%23"+tag+"' title='percentage: done/total complete.'><strong>"+count+"</strong> #"+tag+"</a>";
+        for (var ii in allTags) {
+            var count = allTags[ii]['count'];
+            var tag = allTags[ii]['tag'];
+            var completed = completedTags.filter(function (obj) {
+                return obj.tag === tag;
+            });
+            console.log(completed[0]);
+            var completed_count = (completed[0]) ? completed[0].count : 0;
+            console.log (completed_count);
+            tagLinkOutput += "<a href='/#/"+tag+"?q=%23"+tag+"' title='"+Math.round(100*(completed_count/count))+"% "+completed_count+"/"+count+" complete.'><strong>"+count+"</strong> #"+tag+"</a>";
         }
         //   console.log(tagLinkOutput);
-        var menu = "<div class='menu-options' id='tagsMenu'>"+tagLinkOutput+"</div>";
-
-        jQ('#savedViewHUDButton').after("<div class='button menuButton'><div class='topBarButtonTextContainer'><a href='#' class='button' id='openTags'>View Tags</a></div></div>"+menu);
-        jQ('#openTags').click(function() {jQ('#tagsMenu').slideToggle()});
+        $('#tagsMenu').html(tagLinkOutput);
         search.searchProjectTree(currentSearch);
 
     };
 
-    // search.searchProjectTree('#daily-teeth');
-    // var total = $('.contentMatch').size()/2;
-    // search.searchProjectTree('#daily-teeth is:complete');
-    // var done = $('.contentMatch').size()/2;
-    // console.log(total,done);
-    // console.log(done/total);
-    // var pct = done/total;
+    var generateTagsMenu = function () {
+        // Ensure the search is ready. This will throw an exception if not.
+        var currentSearch = jQ('#searchBox').val();
+        search.searchProjectTree('#wf-tag-list');
+        search.searchProjectTree(currentSearch);
+
+        generateTags();
+        jQ('#savedViewHUDButton').after("<div class='button menuButton'><div class='topBarButtonTextContainer'><a href='#' class='button' id='openTags'>View Tags</a></div></div><div class='menu-options' id='tagsMenu'></div>");
+        jQ('#openTags').on('click',function(e) {
+            e.preventDefault();
+            // If we're showing the tags menu, regenerate the tags list. Don't do it on hide.
+            if ($('#tagsMenu:visible').length < 1) {
+                generateTags();
+            }
+            jQ('#tagsMenu').slideToggle();
+        });
+    }
+
+    var updateTagsNote = function(tagArray) {
+        window.location.hash='';
+        search.searchProjectTree('#wf-tag-list');
+        var tagList = '';
+        for (var ii in tagArray) {
+            var count = tagArray[ii]['count'];
+            var tag = tagArray[ii]['tag'];
+            tagList += count+" #"+tag+" - ";
+        }
+
+        $('.project.matches:last .notes .content').text('View Full List: '+tagList);
+        $('.project.matches:last .content').trigger('blur');
+    };
 
     var attemptTags = function() {
         setTimeout(function() {
             try {
-                // console.log('Generate tags');
                 generateTagsMenu();
             } catch(e) {
-                // console.log("Got exception",e);
                 attemptTags();
             }
         },500);
@@ -164,10 +207,10 @@ function main() {
 
     // Add styles
     jQ('body').append("<style>"+
-    "#tagsMenu{max-width: 250px; right: 140px;}"+
-    "#tagsMenu a {margin: 0 5px; display: block;}"+
-    "#recentLinksMenu{right:400px}"+
-    ".menuButton{display: block; color: white; margin-left: -1px;    padding: 8px 1em;    font-size: 13px;    text-align: center;    float: right;    border-bottom: none;    border-left: 1px solid #111;    border-right: 1px solid #111; border-radius: 0;    background-color: #555;    position: relative;}"+
+        "#tagsMenu{max-width: 250px; right: 140px;}"+
+        "#tagsMenu a {margin: 0 5px; display: block;}"+
+        "#recentLinksMenu{right:400px}"+
+        ".menuButton{display: block; color: white; margin-left: -1px;    padding: 8px 1em;    font-size: 13px;    text-align: center;    float: right;    border-bottom: none;    border-left: 1px solid #111;    border-right: 1px solid #111; border-radius: 0;    background-color: #555;    position: relative;}"+
     "</style>");
 }
 
