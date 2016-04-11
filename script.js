@@ -211,7 +211,7 @@ function main() {
 
     // Add coloring styles (ala Paintly, stolen from: https://userstyles.org/styles/125832/re-workflowy-re-painter)
     setInterval(function() {
-        $('.content').css('color','');
+        $('.content').css('background-color','');
         var colors = {
             'red':'#FFB5B5',
             'orange':'#FFD8B5',
