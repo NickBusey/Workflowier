@@ -8,7 +8,7 @@
 // @version      0.0.2.2
 // @license      MIT
 // @homepageURL  http://workflowier.com/
-// @updateURL    https://greasyfork.org/scripts/18496-workflowier/code/Workflowier.user.js
+// @updateURL    https://openuserjs.org/meta/NickBusey/Workflowier.meta.js
 // ==/UserScript==
 
 // a function that loads jQuery and calls a callback function when jQuery has finished loading
