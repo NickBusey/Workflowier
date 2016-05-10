@@ -35,15 +35,13 @@ https://github.com/NickBusey/Workflowier/issues
  - Stores a list of hashtags ordered by frequency as last Node in Workflowy. That way you have access to a full tags list on Mobile Apps also. Generated on page load and every time you open the 'View Tags' menu. Working on auto-saving of this.
  - Add a 'Recent' menu with 'this week', 'today', and 'just now' buttons to show recently changed items.
  - Random hashtag functionality. Any hashtags with -rand at the end will go to another random item with the same hashtag. Basically recreates the functionality of flash cards.
- - Color coded hashtags ala painterly.
-
   Example: #spanish-rand for spanish words you want to study. #capitals-rand for capitals.
+ - Color coded hashtags ala painterly.
 
 
 ### Planned features
 
  - -randlist hash tag that just shows a random child. This may be more useful than having to put the -rand tags on each item you want to flash through.
- - Show percentage of hashtag items that are 'complete'.
  - Show streak of recently created items with hashtags that have been 'completed'. This will replicate "don't break the chain" functionality.
  - Better install/install directions?
  - Saved settings.
