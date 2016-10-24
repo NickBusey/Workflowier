@@ -1,50 +1,33 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="UTF-8">
     <title>Workflowier by NickBusey</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/NickBusey/Workflowier">View On GitHub</a></li>
-          <li class="downloads"><a href="https://greasyfork.org/en/scripts/18496-workflowier">INSTALL</a></li>
-        </nav>
-      </div><!-- end header -->
+    <section class="page-header">
+      <h1 class="project-name">Workflowier</h1>
+      <h2 class="project-tagline">User Script for Workflowy.com that adds some extra features.</h2>
+      <a href="https://github.com/NickBusey/Workflowier" class="btn">View on GitHub</a>
+      <a href="https://github.com/NickBusey/Workflowier/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/NickBusey/Workflowier/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <div class="wrapper">
-
-      <section>
-        <div id="title">
-          <h1>Workflowier</h1>
-          <p>User Script for Workflowy.com that adds some extra features.</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/NickBusey">NickBusey</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
-
-        <h1>
+    <section class="main-content">
+      <h1>
 <a id="workflowier" class="anchor" href="#workflowier" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Workflowier</h1>
 
 <p>User Script for Workflowy.com that adds some extra features.</p>
 
 <h2>
-<a id="screenshot" class="anchor" href="#screenshot" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshots</h2>
+<a id="screenshot" class="anchor" href="#screenshot" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshot</h2>
 
-<p><img src='images/colors-completion.gif' style='width:200%' /></p>
+<p><a href="http://imgur.com/Plhvj50">http://imgur.com/Plhvj50</a></p>
 
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
@@ -61,11 +44,6 @@
 
 <h2>
 <a id="support" class="anchor" href="#support" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support</h2>
-
-<h3>
-<a id="community" class="anchor" href="#community" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Community</h3>
-
-<p><a href="https://www.reddit.com/r/Workflowier">https://www.reddit.com/r/Workflowier</a></p>
 
 <h3>
 <a id="bugs" class="anchor" href="#bugs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bugs</h3>
@@ -95,20 +73,30 @@
 <a id="planned-features" class="anchor" href="#planned-features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Planned features</h3>
 
 <ul>
+<li>Items with 'due dates'</li>
+<li>Potentially a calendar view for items with due dates</li>
 <li>-randlist hash tag that just shows a random child. This may be more useful than having to put the -rand tags on each item you want to flash through.</li>
+<li>Show percentage of hashtag items that are 'complete'.</li>
 <li>Show streak of recently created items with hashtags that have been 'completed'. This will replicate "don't break the chain" functionality.</li>
+<li>Better install/install directions?</li>
 <li>Saved settings.</li>
 <li>'Always show completed items' setting toggle.</li>
 <li>Random links colored differently.</li>
+<li>Website with demo gifs</li>
 <li>Filters for 'shared' and 'embedded'</li>
 <li>Additional keyboard shortcuts</li>
-<li>Individual list completion percentage display (Given one todo list with a certain hashtag, calculate and display the percentage of complete items in that list)</li>
+<li>Individual list completion (Given one todo list with a certain hashtag, calculate and display the percentage complete of that list)</li>
 <li>Generate charts of historical data (Given a hashtag with a data point eg: #chart-weight 150 it will chart the point over time )</li>
 </ul>
-      </section>
 
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/NickBusey/Workflowier">Workflowier</a> is maintained by <a href="https://github.com/NickBusey">NickBusey</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
   </body>
 </html>
