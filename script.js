@@ -198,12 +198,52 @@ function main() {
     });
 
     // Add image popups
-    // jQ('a').live('mouseenter',function (e) {
-    //     console.log(e);
-    // });
+    var addImagePreviews = function() {
+        jQ('a').each(function() {
+            if (jQ(this).data('previewLoaded')) {
+                return;
+            }
+            var url = this.href;
+            var target = this;
+            var img = null;
+            function testImage(url, callback, timeout) {
+                timeout = timeout || 5000;
+                var timedOut = false, timer;
+                img = new Image();
+                img.onerror = img.onabort = function() {
+                    if (!timedOut) {
+                        clearTimeout(timer);
+                        callback(url, 0);
+                    }
+                };
+                img.onload = function() {
+                    if (!timedOut) {
+                        clearTimeout(timer);
+                        callback(url, 1);
+                    }
+                };
+                img.src = url;
+                timer = setTimeout(function() {
+                    timedOut = true;
+                    // reset .src to invalid URL so it stops previous
+                    // loading, but doesn't trigger new load
+                    img.src = "//!!!!/test.jpg";
+                    callback(url, "timeout");
+                }, timeout);
+            }
+            testImage(url,function(url,loaded) {
+                jQ(target).data('previewLoaded',true);
+                if (loaded) {
+                    jQ(target).after(jQ(img).addClass('image-preview'));
+                }
+            },2000);
+        });
+    };
 
     // Add styles
     jQ('body').append("<style>"+
+        ".image-preview { height: 100px; display: block; } "+
+        ".image-preview:hover { height: initial; display: block; } "+
         "#tagsMenu{ height:300px; overflow:scroll; max-width: 250px; right: 140px; }"+
         "#tagsMenu a { margin: 0 5px; display: block; }"+
         "#recentLinksMenu{ right:400px; }"+
@@ -236,6 +276,7 @@ function main() {
             var color = colors[ii];
             $('.content:contains("#'+ii+'")').css('background-color',color);
         }
+        addImagePreviews();
     },500);
 }
 
