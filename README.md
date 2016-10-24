@@ -6,12 +6,15 @@ User Script for Workflowy.com that adds some extra features.
 
 ## Screenshot
 
-http://imgur.com/Plhvj50
+http://imgur.com/a/SK1VT
 
 ## Installation
 
 ### Automated Install
-Reworking...
+
+Go here: https://openuserjs.org/scripts/NickBusey/Workflowier
+
+Click Install.
 
 ### Manual Install
 Install Tampermonkey for Chrome. Go to workflowy.com, click the Tampermonkey icon, then click 'Add new script'. Delete everything in the large text area and copy and paste the contents of script.js instead, hit save. Reload workflowy.com.
@@ -37,7 +40,7 @@ https://github.com/NickBusey/Workflowier/issues
  - Random hashtag functionality. Any hashtags with -rand at the end will go to another random item with the same hashtag. Basically recreates the functionality of flash cards.
   Example: #spanish-rand for spanish words you want to study. #capitals-rand for capitals.
  - Color coded hashtags ala painterly.
-
+ - Image Previews
 
 ### Planned features
 
