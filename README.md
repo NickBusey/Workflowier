@@ -6,7 +6,7 @@ User Script for Workflowy.com that adds some extra features.
 
 ## Screenshot
 
-http://imgur.com/a/SK1VT
+http://imgur.com/a/CMegu
 
 ## Installation
 
@@ -33,6 +33,7 @@ https://github.com/NickBusey/Workflowier/issues
 
 ### Current features
 
+ - Calendar view, shows upcoming tasks with date completion percentage.
  - Adds a 'View Tags' button which opens a menu with a link to every hashtag in your document, with a count of how many times each tag appears.
  - Percentage complete of hashtags on mouse-over in the menu (in the title attribute)
  - Stores a list of hashtags ordered by frequency as last Node in Workflowy. That way you have access to a full tags list on Mobile Apps also. Generated on page load and every time you open the 'View Tags' menu. Working on auto-saving of this.
@@ -46,13 +47,10 @@ https://github.com/NickBusey/Workflowier/issues
 
  - -randlist hash tag that just shows a random child. This may be more useful than having to put the -rand tags on each item you want to flash through.
  - Show streak of recently created items with hashtags that have been 'completed'. This will replicate "don't break the chain" functionality.
- - Better install/install directions?
  - Saved settings.
  - 'Always show completed items' setting toggle.
  - Random links colored differently.
- - Website with demo gifs
  - Filters for 'shared' and 'embedded'
- - Additional keyboard shortcuts
  - Individual list completion (Given one todo list with a certain hashtag, calculate and display the percentage complete of that list)
  - Generate charts of historical data (Given a hashtag with a data point eg: #chart-weight 150 it will chart the point over time )
 
