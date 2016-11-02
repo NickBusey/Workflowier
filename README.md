@@ -29,9 +29,7 @@ https://www.reddit.com/r/Workflowier
 
 https://github.com/NickBusey/Workflowier/issues
 
-## Roadmap
-
-### Current features
+## Features
 
  - Calendar view, shows upcoming tasks with date completion percentage.
  - Adds a 'View Tags' button which opens a menu with a link to every hashtag in your document, with a count of how many times each tag appears.
@@ -43,14 +41,6 @@ https://github.com/NickBusey/Workflowier/issues
  - Color coded hashtags ala painterly.
  - Image Previews
 
-### Planned features
+### Planned Features
 
- - -randlist hash tag that just shows a random child. This may be more useful than having to put the -rand tags on each item you want to flash through.
- - Show streak of recently created items with hashtags that have been 'completed'. This will replicate "don't break the chain" functionality.
- - Saved settings.
- - 'Always show completed items' setting toggle.
- - Random links colored differently.
- - Filters for 'shared' and 'embedded'
- - Individual list completion (Given one todo list with a certain hashtag, calculate and display the percentage complete of that list)
- - Generate charts of historical data (Given a hashtag with a data point eg: #chart-weight 150 it will chart the point over time )
-
+https://github.com/NickBusey/Workflowier/projects/1
