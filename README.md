@@ -1,4 +1,6 @@
-# Workflowier
+# NOTICE: This project is no longer developed or maintained.
+
+## Instead work is proceeding on http://github.com/NickBusey/BulletNotes
 
 http://workflowier.com/
 
