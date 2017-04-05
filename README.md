@@ -2,8 +2,6 @@
 
 ## Instead work is proceeding on http://github.com/NickBusey/BulletNotes
 
-http://workflowier.com/
-
 User Script for Workflowy.com that adds some extra features.
 
 ## Screenshot
