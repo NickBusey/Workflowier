@@ -1,6 +1,6 @@
 # NOTICE: This project is no longer developed or maintained.
 
-## Instead work is proceeding on https://bulletnotes.io/
+## Instead work is proceeding on https://github.com/NickBusey/BulletNotes
 
 User Script for Workflowy.com that adds some extra features.
 
